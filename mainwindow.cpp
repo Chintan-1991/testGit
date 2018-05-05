@@ -155,7 +155,7 @@ void GLWidget::paintGL()
 void GLWidget::drawGrid()
 {
     //glLineWidth(1.0);
-    glColor3f(0.0,0.0,1.0);
+
 
     glMatrixMode(GL_PROJECTION);            // To operate on the Projection matrix
     glLoadIdentity();                       // Reset
@@ -163,6 +163,7 @@ void GLWidget::drawGrid()
     glMatrixMode(GL_MODELVIEW);
 
     //outer grid box
+    glColor3f(0.0,0.0,0.0);
     glBegin(GL_LINE_LOOP);
         glVertex2d(minX,minY);
         glVertex2d(maxX,minY);
@@ -171,7 +172,7 @@ void GLWidget::drawGrid()
     glEnd();
 
     //horizontal line
-    glColor4f(1.0,0.0,0.0,0.5);
+    glColor4f(0.8,0.8,0.8,0.5);
     glBegin(GL_LINES);
         for(int i=minY+1;i<maxY;i++)
         {
@@ -182,7 +183,7 @@ void GLWidget::drawGrid()
     glEnd();
 
     //vertical line
-    glColor4f(0.0,1.0,0.0,0.5);
+    glColor4f(0.8,0.8,0.8,0.5);
     glBegin(GL_LINES);
         for(int i=minX+1;i<maxX;i++)
         {
@@ -195,9 +196,7 @@ void GLWidget::drawGrid()
 
 void GLWidget::drawCurve()
 {
-    glLineWidth(1.0);
-    glColor3f(0.6,0.1,1.0);
-
+    glColor3f(1.0,0.0,1.0);
     glBegin(GL_LINES);
         for(int i=0;i<depths.size()-1;i++)
         {
@@ -206,7 +205,7 @@ void GLWidget::drawCurve()
 
             if(y1 > 0 && y2 > 0)
             {
-                glLineWidth(1.0);
+                glLineWidth(2.0);
                 glVertex2d(x1,y1); glVertex2d(x2,y2);
             }
         }
